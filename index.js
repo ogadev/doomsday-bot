@@ -46,7 +46,8 @@ client.on('message', msg => {
   }
 
   if(input[0] === 'covidCommands'){
-    printCommands();
+    console.log("here")
+    msg.reply(printCommands());
   } 
 });
 
@@ -74,7 +75,9 @@ function print(data, location) {
 }
 
 function printCommands() {
+  console.log("jjeree")
   let result = `
     For any US state: covidState-"stateName"
     For any Country: covidCountry-"countryName"`
+    return result;
 }
