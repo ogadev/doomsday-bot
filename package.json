@@ -15,5 +15,8 @@
     "minimist": "^1.2.5",
     "novelcovid": "^1.0.7-b3",
     "unirest": "^0.6.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.2"
   }
 }
