@@ -36,19 +36,19 @@ client.on('message', msg => {
   console.log(input)
   
   if (input[0] === 'covidState'){
-    callState(input[1])
+    callState(toTitleCase(input[1]))
       .then(res => {
-        msg.reply(input[1] +":"+ print(res, states[input[1]]))
+        msg.reply(toTitleCase(input[1]) +":"+ print(res, states[toTitleCase(input[1])]))
       })
       .catch(err => {
         msg.reply(" State could not be found beep bop wash your hands")
       })
   }
   if(input[0] === 'covidCountry') {
-    callCountry(input[1])
+    callCountry(toTitleCase(input[1]))
       .then(res => {
-        let countryObj = countries.find(t => t.country === input[1])
-        msg.reply(input[1] +":"+ print(res, countryObj.population))
+        let countryObj = countries.find(t => t.country === toTitleCase(input[1]))
+        msg.reply(toTitleCase(input[1]) +":"+ print(res, countryObj.population))
       })
       .catch(err => {
         msg.reply(" Country could not be found beep bop wash your hands")
@@ -69,7 +69,7 @@ client.on('message', msg => {
   if(input[0] === 'whatIsCovid19'){
     msg.reply(covid19 + "\n\n" + covid19_moreinfo);
   }
-  if(input[0] === 'covidCommands'){
+  if(input[0] === '!help'){
     console.log("here")
     msg.reply(printCommands());
   } 
@@ -109,4 +109,10 @@ function printCommands() {
     What is Social Distancing? Type "covidSD"
     What is Flattening the Curve? Type "covidFTC"`
     return result;
+}
+
+function toTitleCase(str) {
+  return str.replace(/\w\S*/g, function(txt){
+      return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+  });
 }
