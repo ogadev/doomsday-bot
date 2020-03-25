@@ -68,14 +68,13 @@ function print(data, location) {
   let result = `
     Total Cases: ${data.cases}     Total population percentage: ${(data.cases / location).toFixed(5)}% 
     Total deaths: ${data.deaths}    Total population percentage: ${(data.deaths / location).toFixed(6)}% 
-    Would you like to be part of this numbers? No? 
+    Would you like to be part of these numbers? No? 
     Then DO NOT FORGET TO WASH YOUR HANDS!!!`
 
   return result;
 }
 
 function printCommands() {
-  console.log("jjeree")
   let result = `
     For any US state: covidState-"stateName"
     For any Country: covidCountry-"countryName"`
