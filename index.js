@@ -44,7 +44,22 @@ client.on('message', msg => {
   if(input[0] === 'covidTop10'){
     msg.reply(" coming soon");
   }
-
+  if(input[0] === 'covidFTC'){
+    
+    //ADDING
+    msg.reply("What does it mean to “flatten the curve? \n\nThe ideal goal in fighting an epidemic or pandemic is to completely halt the spread. But merely slowing it — mitigation — is critical. This reduces the number of cases that are active at any given time, which in turn gives doctors, hospitals, police, schools and vaccine-manufacturers time to prepare and respond, without becoming overwhelmed. Most hospitals can function with 10 percent reduction in staff, but not with half their people out at once. -NYTimes");
+    msg.reply("Find more info here: https://www.nytimes.com/2020/03/11/science/coronavirus-curve-mitigation-infection.html")
+  }
+  if(input[0] === 'covidSelfQuarantine'){
+    
+    //ADDING
+    msg.reply(" coming soon");
+  }
+  if(input[0] === 'whatIsCovid19'){
+    
+    //ADDING
+    msg.reply(" coming soon");
+  }
   if(input[0] === 'covidCommands'){
     console.log("here")
     msg.reply(printCommands());
