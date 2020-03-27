@@ -54,25 +54,29 @@ client.on('message', msg => {
         msg.reply(" Country could not be found beep bop wash your hands")
       })
   }
+  //top 10 stuff starts right here
   if (input[0] === 'covidTop10Deaths') {
     if (input[1].toLowerCase() === 'countries') {
       callSortedCountry('deaths')
         .then(res => {
           let counter = 1;
-          let output = "";
+          let output = "\n";
           res.slice(0, 10).forEach(item => {
             output += `${counter}. ${item.country}: ${item.deaths}\n`;
             counter++;
           });
           msg.reply(output);
         })
-        .catch(err => console.log(err));
+        .catch(err => {
+          msg.reply("beep bop we have an error, but please wash your hands")
+          console.log(err)
+        });
     }
-    if (input[1].toLowerCase() === 'states') {
+    else if (input[1].toLowerCase() === 'states') {
       callAllStates()
         .then(res => {
           let counter = 1;
-          let output = "";
+          let output = "\n";
           res.sort((a, b) => b.deaths - a.deaths);
           res.slice(0, 10).forEach(item => {
             output += `${counter}. ${item.state}: ${item.deaths}\n`;
@@ -80,7 +84,13 @@ client.on('message', msg => {
           });
           msg.reply(output);
         })
-        .catch(err => console.log(err));
+        .catch(err => {
+          msg.reply("beep bop we have an error, but please wash your hands")
+          console.log(err)
+        });
+    }
+    else {
+      msg.reply("Error -states, or -countries. But please wash your hands")
     }
   }
   if (input[0] === 'covidTop10Cases') {
@@ -88,20 +98,23 @@ client.on('message', msg => {
       callSortedCountry('cases')
         .then(res => {
           let counter = 1;
-          let output = "";
+          let output = "\n";
           res.slice(0, 10).forEach(item => {
             output += `${counter}. ${item.country}: ${item.cases}\n`;
             counter++;
           });
           msg.reply(output);
         })
-        .catch(err => console.log(err));
+        .catch(err => {
+          msg.reply("beep bop we have an error, but please wash your hands")
+          console.log(err)
+        });
     }
-    if (input[1].toLowerCase() === 'states') {
+    else if (input[1].toLowerCase() === 'states') {
       callAllStates()
         .then(res => {
           let counter = 1;
-          let output = "";
+          let output = "\n";
           res.sort((a, b) => b.cases - a.cases);
           res.slice(0, 10).forEach(item => {
             output += `${counter}. ${item.state}: ${item.cases}\n`;
@@ -109,7 +122,13 @@ client.on('message', msg => {
           });
           msg.reply(output);
         })
-        .catch(err => console.log(err));
+        .catch(err => {
+          msg.reply("beep bop we have an error, but please wash your hands")
+          console.log(err)
+        });
+    }
+    else {
+      msg.reply("Error -states, or -countries. But please wash your hands")
     }
   }
   if(input[0] === 'covidFTC'){
@@ -168,6 +187,8 @@ function printCommands() {
     List of COVID-19 Bot Commands:
 
     Unfamiliar with COVID-19? Type "whatIsCovid19"
+    To display top-10 cases per state or country covidTop10Cases-state or -countries
+    To display top-10 deaths per state or country covidTop10Deaths-state or -countries
     To display up-to-date numbers for any US state: covidState-"stateName"
     To display up-to-date numbers for any Country: covidCountry-"countryName"
     Want to know how you can help fight COVID-19? Type "covidHowToHelp"
