@@ -187,8 +187,8 @@ function printCommands() {
     List of COVID-19 Bot Commands:
 
     Unfamiliar with COVID-19? Type "whatIsCovid19"
-    To display top-10 cases per state or country covidTop10Cases-state or -countries
-    To display top-10 deaths per state or country covidTop10Deaths-state or -countries
+    To display top-10 cases per state or country covidTop10Cases-states or -countries
+    To display top-10 deaths per state or country covidTop10Deaths-states or -countries
     To display up-to-date numbers for any US state: covidState-"stateName"
     To display up-to-date numbers for any Country: covidCountry-"countryName"
     Want to know how you can help fight COVID-19? Type "covidHowToHelp"
