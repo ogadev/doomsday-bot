@@ -186,7 +186,7 @@ async function callAllStates() {
 function print(data, location){
   let result = `
   Total Cases: ${data.cases}    Total Deaths: ${data.deaths}
-  Deaths (%): ${(data.deaths / location).toFixed(6)}%  Infection (%): ${(data.cases / location).toFixed(6)}%
+  Deaths (%): ${(data.deaths / location).toFixed(7)}%  Infection (%): ${(data.cases / location).toFixed(6)}%
   Please remember to wash your hands!
   `
   return result;
