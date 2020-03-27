@@ -59,10 +59,12 @@ client.on('message', msg => {
       callSortedCountry('deaths')
         .then(res => {
           let counter = 1;
+          let output = "";
           res.slice(0, 10).forEach(item => {
-            console.log(`${counter}. ${item.country}: ${item.deaths}`);
+            output += `${counter}. ${item.country}: ${item.deaths}\n`;
             counter++;
           });
+          msg.reply(output);
         })
         .catch(err => console.log(err));
     }
@@ -70,11 +72,13 @@ client.on('message', msg => {
       callAllStates()
         .then(res => {
           let counter = 1;
+          let output = "";
           res.sort((a, b) => b.deaths - a.deaths);
           res.slice(0, 10).forEach(item => {
-            console.log(`${counter}. ${item.state}: ${item.deaths}`);
+            output += `${counter}. ${item.state}: ${item.deaths}\n`;
             counter++;
           });
+          msg.reply(output);
         })
         .catch(err => console.log(err));
     }
@@ -84,10 +88,12 @@ client.on('message', msg => {
       callSortedCountry('cases')
         .then(res => {
           let counter = 1;
+          let output = "";
           res.slice(0, 10).forEach(item => {
-            console.log(`${counter}. ${item.country}: ${item.cases}`);
+            output += `${counter}. ${item.country}: ${item.cases}\n`;
             counter++;
           });
+          msg.reply(output);
         })
         .catch(err => console.log(err));
     }
@@ -95,11 +101,13 @@ client.on('message', msg => {
       callAllStates()
         .then(res => {
           let counter = 1;
+          let output = "";
           res.sort((a, b) => b.cases - a.cases);
           res.slice(0, 10).forEach(item => {
-            console.log(`${counter}. ${item.state}: ${item.cases}`);
+            output += `${counter}. ${item.state}: ${item.cases}\n`;
             counter++;
           });
+          msg.reply(output);
         })
         .catch(err => console.log(err));
     }
