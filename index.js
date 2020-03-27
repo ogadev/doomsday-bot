@@ -172,7 +172,7 @@ async function callAllStates() {
   return data;
 }
 
-function print(data, location) {
+/*function print(data, location) {
   let result = `
     Total Cases: ${data.cases}     Total population percentage: ${(data.cases / location).toFixed(5)}% 
     Total deaths: ${data.deaths}    Total population percentage: ${(data.deaths / location).toFixed(6)}% 
@@ -180,6 +180,15 @@ function print(data, location) {
     Then DON'T FORGET TO WASH YOUR HANDS!!!`
 
   return result;
+}*/
+
+
+function print(data, location){
+  let result = `
+   Total Cases: ${data.cases}    Total Deaths: ${data.deaths}%
+    Deaths (%): ${(data.deaths/location.toFixed(6))}  Infection (%): ${(data.cases/location).toFixed(5)}%
+  Please remember to wash your hands!
+  `
 }
 
 function printCommands() {
