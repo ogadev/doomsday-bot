@@ -54,8 +54,55 @@ client.on('message', msg => {
         msg.reply(" Country could not be found beep bop wash your hands")
       })
   }
-  if(input[0] === 'covidTop10'){
-    msg.reply(" coming soon");
+  if (input[0] === 'covidTop10Deaths') {
+    if (input[1].toLowerCase() === 'countries') {
+      callSortedCountry('deaths')
+        .then(res => {
+          let counter = 1;
+          res.slice(0, 10).forEach(item => {
+            console.log(`${counter}. ${item.country}: ${item.deaths}`);
+            counter++;
+          });
+        })
+        .catch(err => console.log(err));
+    }
+    if (input[1].toLowerCase() === 'states') {
+      callAllStates()
+        .then(res => {
+          let counter = 1;
+          res.sort((a, b) => b.deaths - a.deaths);
+          res.slice(0, 10).forEach(item => {
+            console.log(`${counter}. ${item.state}: ${item.deaths}`);
+            counter++;
+          });
+        })
+        .catch(err => console.log(err));
+    }
+  }
+  if (input[0] === 'covidTop10Cases') {
+    if (input[1].toLowerCase() === 'countries') {
+      callSortedCountry('cases')
+        .then(res => {
+          let counter = 1;
+          res.slice(0, 10).forEach(item => {
+            console.log(`${counter}. ${item.country}: ${item.cases}`);
+            counter++;
+          });
+        })
+        .catch(err => console.log(err));
+    }
+    if (input[1].toLowerCase() === 'states') {
+      callAllStates()
+        .then(res => {
+          let counter = 1;
+          res.sort((a, b) => b.cases - a.cases);
+          res.slice(0, 10).forEach(item => {
+            console.log(`${counter}. ${item.state}: ${item.cases}`);
+            counter++;
+          });
+        })
+        .catch(err => console.log(err));
+    }
   }
   if(input[0] === 'covidFTC'){
     msg.reply(ftc + "\n\n" + ftc_moreinfo);
@@ -85,6 +132,16 @@ async function callState(state) {
 
 async function callCountry(country) {
   let data = await covid.getCountry({country: country})
+  return data;
+}
+
+async function callSortedCountry(sort) {
+  let data = await covid.getCountry({ sort: sort });
+  return data;
+}
+
+async function callAllStates() {
+  let data = await covid.getState();
   return data;
 }
 
