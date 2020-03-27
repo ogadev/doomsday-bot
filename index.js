@@ -41,7 +41,7 @@ client.on('message', msg => {
         msg.reply(toTitleCase(input[1]) +":"+ print(res, states[toTitleCase(input[1])]))
       })
       .catch(err => {
-        msg.reply(" State could not be found beep bop wash your hands")
+        msg.reply(" State not found. Beep bop - wash your hands")
       })
   }
   if(input[0] === 'covidCountry') {
@@ -51,7 +51,7 @@ client.on('message', msg => {
         msg.reply(toTitleCase(input[1]) +":"+ print(res, countryObj.population))
       })
       .catch(err => {
-        msg.reply(" Country could not be found beep bop wash your hands")
+        msg.reply(" Country not found. Beep bop - wash your hands")
       })
   }
   //top 10 stuff starts right here
@@ -185,10 +185,11 @@ async function callAllStates() {
 
 function print(data, location){
   let result = `
-   Total Cases: ${data.cases}    Total Deaths: ${data.deaths}
-    Deaths (%): ${(data.deaths/location.toFixed(6))}%  Infection (%): ${(data.cases/location).toFixed(5)}%
+  Total Cases: ${data.cases}    Total Deaths: ${data.deaths}
+  Deaths (%): ${(data.deaths / location).toFixed(6)}%  Infection (%): ${(data.cases / location).toFixed(6)}%
   Please remember to wash your hands!
   `
+  return result;
 }
 
 function printCommands() {
