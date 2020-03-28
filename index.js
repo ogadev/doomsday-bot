@@ -212,7 +212,7 @@ function print(data, location){
   Population: ${location}
   ${totalCases} Total Deaths: ${data.deaths}
   ${infectionPercent} Deaths (%): ${(data.deaths / data.cases).toFixed(3)}%  
-  Please remember to wash your hands!
+  Please remember to wash your hands! :microbe: :soap:
   `
   return result;
 }
