@@ -62,7 +62,7 @@ client.on('message', msg => {
           let counter = 1;
           let output = "\n";
           res.slice(0, 10).forEach(item => {
-            output += `${counter}. ${item.country}: ${item.deaths}\n`;
+            output += `${counter}. ${item.country}: ${numberWithCommas(item.deaths)}\n`;
             counter++;
           });
           msg.reply(output);
@@ -117,7 +117,7 @@ client.on('message', msg => {
           let output = "\n";
           res.sort((a, b) => b.cases - a.cases);
           res.slice(0, 10).forEach(item => {
-            output += `${counter}. ${item.state}: ${item.cases}\n`;
+            output += `${counter}. ${item.state}: ${numberWithCommas(item.cases)}\n`;
             counter++;
           });
           msg.reply(output);
