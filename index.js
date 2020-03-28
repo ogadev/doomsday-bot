@@ -194,23 +194,29 @@ async function callAllStates() {
 }*/
 
 function print(data, location){
-  var khara = digits_count(data.cases);
+  var khara = digits_count(numberWithCommas(data.cases));
   var pad = 0;
   if(khara == 3){
     pad = 50;
   }
   else if(khara == 5){
-    pad = 50-(2*(khara-3));
+    pad = 50-(1*(khara-3));
   }
   else if(khara == 4){
     pad = 50-(3*(khara-3));
   }
+  else if(khara == 6){
+    pad = 50-(1*(khara-3));
+  }
+  else if(khara == 7){
+    pad = 50-(1*(khara-3));
+  }
 
-  let totalCases = ("Total Cases: ".concat(data.cases)).padEnd(pad, ' ');
+  let totalCases = ("Total Cases: ".concat(numberWithCommas(data.cases))).padEnd(pad, ' ');
   let infectionPercent = ("Infections (%): ".concat((data.cases /location).toFixed(7), "%")).padEnd(37,' ');
   let result = `
-  Population: ${location}
-  ${totalCases} Total Deaths: ${data.deaths}
+  Population: ${numberWithCommas(location)}
+  ${totalCases} Total Deaths: ${numberWithCommas(data.deaths)}
   ${infectionPercent} Deaths (%): ${(data.deaths / data.cases).toFixed(3)}%  
   Please remember to wash your hands! :microbe: :soap:
   `
@@ -221,6 +227,11 @@ function print(data, location){
 function digits_count(n){
   var count = n.toString().length;
   return count;
+}
+
+//Helper function - returns a comma seperated string for the population and total cases.
+function numberWithCommas(x){
+  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g,",");
 }
 
 
